@@ -1,0 +1,37 @@
+@import "../../../variables.scss";
+.dashboardMain {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  .pageHeader {
+    height: 3%;
+    position: relative;
+    width: 100%;
+    text-align: left;
+    padding: 2%;
+    span {
+      font-weight: 100;
+      font-size: 1.5em;
+    }
+  }
+  .pageContents {
+    padding-left: 2%;
+    padding-right: 2%;
+    position: relative;
+    min-height: 600px;
+  }
+}
+
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 20%;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}

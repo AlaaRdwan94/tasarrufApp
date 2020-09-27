@@ -1,0 +1,38 @@
+$color1: rgba(244, 91, 86);
+$color2: rgba(212, 93, 120);
+$color3: rgba(250, 227, 216);
+
+$fsize1: 50px;
+
+$md-tasarruf-primary: (
+    50: #feebeb,
+    100: #fccecc,
+    200: #faadab,
+    300: #f78c89,
+    400: #f6746f,
+    500: #f45b56,
+    600: #f3534f,
+    700: #f14945,
+    800: #ef403c,
+    900: #ec2f2b,
+    A100:#ffffff,
+    A200:#fff8f8,
+    A400:#ffc6c5,
+    A700:#ffadac,
+    contrast: (
+        50: #000000,
+        100: #000000,
+        200: #000000,
+        300: #ffffff,
+        400: #ffffff,
+        500: #ffffff,
+        600: #ffffff,
+        700: #ffffff,
+        800: #ffffff,
+        900: #ffffff,
+        A100: #000000,
+        A200: #000000,
+        A400: #ffffff,
+        A700: #ffffff
+    )
+);

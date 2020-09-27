@@ -1,0 +1,37 @@
+<app-main title="Edit Category" [loading]="loadingState">
+  <div class="skeletonHome" *ngIf="loadingState">
+    <app-skeleton></app-skeleton>
+  </div>
+  <div class="editCategoryPage" *ngIf="!loadingState">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title
+          >Edit {{ toEditCategory.englishName }} Category</mat-card-title
+        >
+      </mat-card-header>
+      <mat-card-content>
+        <div class="formContainer">
+          <form [formGroup]="editingCategory">
+            <mat-form-field class="formElement">
+              <input
+                matInput
+                placeholder="English Name"
+                formControlName="englishName"
+              />
+            </mat-form-field>
+
+            <mat-form-field class="formElement">
+              <input
+                matInput
+                placeholder="Turkish Name"
+                formControlName="turkishName"
+              />
+            </mat-form-field>
+
+            <button mat-raised-button (click)="updateCategory()">Submit</button>
+          </form>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</app-main>

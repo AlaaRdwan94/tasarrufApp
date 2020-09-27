@@ -1,0 +1,116 @@
+<app-main title="Edit Plan" [loading]="loadingState">
+  <div class="skeletonHome" *ngIf="loadingState">
+    <app-skeleton></app-skeleton>
+  </div>
+  <div class="editPlanPage" *ngIf="!loadingState">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Edit {{ toEditPlan.englishName }} Plan</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="formContainer">
+          <form [formGroup]="editingPlan">
+            <mat-form-field class="formElement">
+              <input
+                matInput
+                placeholder="English Name"
+                formControlName="englishName"
+              />
+            </mat-form-field>
+
+            <mat-form-field class="formElement">
+              <input
+                matInput
+                placeholder="English Description"
+                formControlName="englishDescription"
+              />
+            </mat-form-field>
+
+            <mat-form-field class="formElement">
+              <input
+                matInput
+                placeholder="Turkish Name"
+                formControlName="turkishName"
+              />
+            </mat-form-field>
+
+            <mat-form-field class="formElement">
+              <input
+                matInput
+                placeholder="Turkish Description"
+                formControlName="turkishDescription"
+              />
+            </mat-form-field>
+
+            <mat-form-field class="formElement">
+              <input
+                matInput
+                type="number"
+                placeholder="Price"
+                formControlName="price"
+              />
+            </mat-form-field>
+
+            <mat-form-field class="formElement">
+              <input
+                matInput
+                type="number"
+                placeholder="Count Of Offers"
+                formControlName="countOfOffers"
+              />
+            </mat-form-field>
+
+            <mat-form-field class="formElement">
+              <mat-label>Icon</mat-label>
+              <mat-select formControlName="icon">
+                <mat-option [value]="planIcons[0]">Gold</mat-option>
+                <mat-option [value]="planIcons[1]">Silver</mat-option>
+                <mat-option [value]="planIcons[2]">Bronze</mat-option>
+                <mat-option [value]="planIcons[3]">Platinum</mat-option>
+                <mat-option [value]="planIcons[4]">Basic</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div class="isDefaultField">
+              <mat-checkbox color="primary" formControlName="isDefault"
+                >Set as default plan</mat-checkbox
+              >
+            </div>
+
+            <mat-form-field class="formElement">
+              <mat-label>Add Category</mat-label>
+              <mat-select formControlName="newCategoryID" multiple>
+                <mat-option
+                  *ngFor="let notAssociatedCategory of notAssociatedCategories"
+                  [value]="notAssociatedCategory.ID"
+                >
+                  {{ notAssociatedCategory.englishName }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-list role="list">
+              <div mat-subheader>Associated Categories</div>
+              <mat-list-item
+                role="listitem"
+                *ngFor="let currentCategory of currentCategories"
+              >
+                <button
+                  mat-icon-button
+                  (click)="removePlanCategoryAssociation(currentCategory.ID)"
+                >
+                  <mat-icon mat-list-icon color="primary">delete</mat-icon>
+                </button>
+                <div mat-line>{{ currentCategory.englishName }}</div>
+              </mat-list-item>
+              <div *ngIf="currentCategories.length === 0">
+                <p class="warning">
+                  This plan is not associated with any category
+                </p>
+              </div>
+            </mat-list>
+            <button mat-raised-button (click)="updatePlan()">Submit</button>
+          </form>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</app-main>

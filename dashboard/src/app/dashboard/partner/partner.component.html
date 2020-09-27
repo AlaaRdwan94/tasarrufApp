@@ -1,0 +1,198 @@
+<app-main title="Merchant Profile" [loading]="loadingState">
+  <div class="skeletonHome" *ngIf="loadingState">
+    <app-skeleton></app-skeleton>
+  </div>
+  <div class="partnerPage" *ngIf="!loadingState">
+    <div class="partnerDetails">
+      <mat-card class="userDetailsCard" *ngIf="partner">
+        <div class="cardHeader">
+          <div class="headerTitle">User Details</div>
+        </div>
+        <table class="userPropertiesTable">
+          <tbody>
+            <tr>
+              <th>Field</th>
+              <th>Value</th>
+            </tr>
+            <tr>
+              <td>ID</td>
+              <td>{{ partner.ID }}</td>
+            </tr>
+            <tr>
+              <td>User Type</td>
+              <td>Merchant</td>
+            </tr>
+            <tr>
+              <td>First Name</td>
+              <td>
+                <span>{{ partner.firstName }}</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Last Name</td>
+              <td>
+                <span>{{ partner.lastName }}</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Email</td>
+              <td>
+                <span>{{ partner.email }}</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Mobile</td>
+              <td>
+                <span>{{ partner.mobile }}</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Birth Date</td>
+              <td>{{ partner.dateOfBirth }}</td>
+            </tr>
+            <tr *ngIf="partner.active">
+              <td>Active</td>
+              <td>
+                <button
+                  mat-raised-button
+                  color="primary"
+                  (click)="toggleActiveProperty(partner.ID)"
+                >
+                  Deactivate
+                </button>
+              </td>
+            </tr>
+            <tr *ngIf="!partner.active">
+              <td>Deactivated</td>
+              <td>
+                <button
+                  mat-raised-button
+                  color="accent"
+                  (click)="toggleActiveProperty(partner.ID)"
+                >
+                  Activate
+                </button>
+              </td>
+            </tr>
+            <tr *ngIf="!partner.partnerProfile.approved">
+              <td>Approve Partner</td>
+              <td>
+                <button
+                  mat-raised-button
+                  color="acccent"
+                  (click)="approvePartner(partner.ID)"
+                >
+                  Approve
+                </button>
+              </td>
+            </tr>
+            <tr *ngIf="!partner.partnerProfile.approved">
+              <td>Reject Partner</td>
+              <td>
+                <button
+                  mat-raised-button
+                  color="warning"
+                  (click)="rejectPartner(partner.ID)"
+                >
+                  Reject
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </mat-card>
+      <mat-card class="userDetailsCard">
+        <div class="cardHeader">
+          <div class="headerTitle">Merchant Specific Details</div>
+        </div>
+        <table class="userPropertiesTable" *ngIf="partner">
+          <tbody>
+            <tr>
+              <th>Field</th>
+              <th>Value</th>
+            </tr>
+            <tr>
+              <td>Partner Profile ID</td>
+              <td>{{ partner.partnerProfile.ID }}</td>
+            </tr>
+            <tr>
+              <td>Approved</td>
+              <td>{{ partner.partnerProfile.approved }}</td>
+            </tr>
+            <tr>
+              <td>Discount Value</td>
+              <td>
+                <span>{{ partner.partnerProfile.discountValue }}%</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Phone</td>
+              <td>
+                <span>{{ partner.partnerProfile.phone }}</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Brand Name</td>
+              <td>
+                <span>{{ partner.partnerProfile.brandName }}</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Offer Description</td>
+              <td>
+                <span>{{ partner.partnerProfile.offerDiscription }}</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Main Branch Address</td>
+              <td>
+                <span>{{ partner.partnerProfile.mainBranchAddress }}</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Main Branch City</td>
+              <td>
+                <span>{{ partner.partnerProfile.city.englishName }}</span>
+              </td>
+            </tr>
+            <tr *ngIf="category">
+              <td>Category ID</td>
+              <td>
+                <span>{{ category.ID }}</span>
+              </td>
+            </tr>
+            <tr *ngIf="category">
+              <td>Category English Name</td>
+              <td>
+                <span>{{ category.englishName }}</span>
+              </td>
+            </tr>
+            <tr *ngIf="category">
+              <td>Category Turkish Name</td>
+              <td>
+                <span>{{ category.turkishName }}</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Trade License URL</td>
+              <td *ngIf="partner.partnerProfile.licenceURL">
+                <a [href]="partner.partnerProfile.licenceURL"
+                  >Download Trade Licence</a
+                >
+              </td>
+              <td *ngIf="!partner.partnerProfile.licenceURL">
+                <span style="color:red;font-weight: 500;">NOT SUBMITTED</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </mat-card>
+    </div>
+    <div class="branches" *ngIf="partner">
+      <div class="tableController">
+        <h2>Branches</h2>
+      </div>
+      <app-branches-table [branchesData]="branches"></app-branches-table>
+    </div>
+  </div>
+</app-main>

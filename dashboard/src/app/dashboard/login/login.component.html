@@ -1,0 +1,71 @@
+<div class="loginPage">
+  <span class="pageHeader">Tasarruf</span>
+  <div class="loginForm">
+    <mat-card>
+      <mat-card-title>Admin Login</mat-card-title>
+      <mat-card-content *ngIf="!loading">
+        <form
+          #loginForm="ngForm"
+          (ngSubmit)="login(loginForm)"
+          *ngIf="!recoverPasswordState"
+        >
+          <mat-form-field class="example-full-width" appearance="outline">
+            <input
+              matInput
+              [(ngModel)]="credentials.email"
+              placeholder="Email"
+              type="email"
+              name="email"
+            />
+          </mat-form-field>
+          <br />
+          <mat-form-field class="example-full-width" appearance="outline">
+            <input
+              matInput
+              placeholder="Password"
+              type="password"
+              [(ngModel)]="credentials.password"
+              name="password"
+            />
+          </mat-form-field>
+          <br />
+          <button mat-button (click)="forgetPassword()" type="button">
+            Forgot your admin passowrd?
+          </button>
+          <br />
+          <br />
+          <button mat-raised-button color="primary">Login</button>
+        </form>
+        <form
+          #recoverPasswordForm="ngForm"
+          (ngSubmit)="sendRecoverPassword(recoverPasswordForm)"
+          *ngIf="recoverPasswordState"
+        >
+          <h2>
+            Please enter the mobile phone associated with your tasarruf admin
+            account.<br />
+            A recovery password will be sent to your mobile phone number.
+          </h2>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <input
+              matInput
+              [(ngModel)]="recoveryPhone"
+              placeholder="Mobile Phone"
+              name="mobile"
+            />
+          </mat-form-field>
+          <br />
+          <button mat-raised-button color="primary">
+            Send Recovery Password
+          </button>
+        </form>
+      </mat-card-content>
+      <mat-card-content *ngIf="loading" class="loadingScreen">
+        <mat-spinner
+          [color]="lodingIndicatorColor"
+          class="lodingIndicator"
+        ></mat-spinner>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+.newPlanPage{
+    min-height: 600px;
+    .createPlanForm{
+        padding:5%;
+        text-align: center;
+        .createPlanFormField{
+            width: 100%;
+        }
+        .isDefaultField {
+            text-align: left;
+        }
+    }
+}

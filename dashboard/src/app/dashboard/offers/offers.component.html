@@ -1,0 +1,57 @@
+<app-main title="Offers Page" [loading]="loadingState">
+  <div class="skeletonHome" *ngIf="loadingState">
+    <app-skeleton></app-skeleton>
+  </div>
+  <div class="usersPage" *ngIf="!loadingState">
+    <!-- Users Table -->
+    <div class="usersTable">
+      <div class="tableController">
+        <mat-accordion class="filterContainer">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header class="filterHeader">
+              <mat-panel-title>
+                Consumed offers (scans)
+              </mat-panel-title>
+              <mat-panel-description class="description">
+                Filter by Customer ID and Merchant ID
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <form [formGroup]="filterForm" class="searchForm">
+              <mat-form-field class="filterField">
+                <mat-label>Customer ID</mat-label>
+                <input
+                  formControlName="customerID"
+                  matInput
+                  type="number"
+                  min="1"
+                />
+              </mat-form-field>
+
+              <mat-form-field class="filterField">
+                <mat-label>Merchant ID</mat-label>
+                <input
+                  matInput
+                  formControlName="partnerID"
+                  type="number"
+                  min="1"
+                />
+              </mat-form-field>
+              <div class="filterButton">
+                <button mat-raised-button (click)="getOffers()">
+                  Remove Filters
+                </button>
+
+                <button mat-raised-button (click)="filterOffers()">
+                  Apply Filters
+                </button>
+              </div>
+            </form>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+      <app-offers-table [offersData]="offersData"></app-offers-table>
+    </div>
+    <!--/ Users Table-->
+  </div>
+</app-main>

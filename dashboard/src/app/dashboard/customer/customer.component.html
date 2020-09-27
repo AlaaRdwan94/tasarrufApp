@@ -1,0 +1,14 @@
+<app-main title="Cusotmer Page" [loading]="loadingState">
+  <div class="skeletonHome" *ngIf="loadingState">
+    <app-skeleton></app-skeleton>
+  </div>
+  <div class="customerPage" *ngIf="!loadingState">
+    <app-user [customer]="customer"></app-user>
+    <div class="offers">
+      <div class="tableController">
+        <h2>Consumed Offers (scans)</h2>
+      </div>
+      <app-offers-table *ngIf="offers" [offersData]="offers"></app-offers-table>
+    </div>
+  </div>
+</app-main>

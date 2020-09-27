@@ -1,0 +1,41 @@
+<table mat-table [dataSource]="offersData" class="mat-elevation-z8">
+  <ng-container matColumnDef="ID">
+    <th mat-header-cell *matHeaderCellDef>ID</th>
+    <td mat-cell *matCellDef="let element">{{ element.ID }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="CreatedAt">
+    <th mat-header-cell *matHeaderCellDef>Created At</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.CreatedAt }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="CustomerID">
+    <th mat-header-cell *matHeaderCellDef>Customer ID</th>
+    <td mat-cell *matCellDef="let element">{{ element.customerID }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="PartnerID">
+    <th mat-header-cell *matHeaderCellDef>Partner ID</th>
+    <td mat-cell *matCellDef="let element">{{ element.partnerID }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Amount">
+    <th mat-header-cell *matHeaderCellDef>Amount</th>
+    <td mat-cell *matCellDef="let element">{{ element.amount }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Discount">
+    <th mat-header-cell *matHeaderCellDef>Discount</th>
+    <td mat-cell *matCellDef="let element">{{ element.discount }} %</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Total">
+    <th mat-header-cell *matHeaderCellDef>Total</th>
+    <td mat-cell *matCellDef="let element">{{ element.total }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

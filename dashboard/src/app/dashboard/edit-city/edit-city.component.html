@@ -1,0 +1,36 @@
+<app-main title="Edit Plan" [loading]="loadingState">
+  <div class="skeletonHome" *ngIf="loadingState">
+    <app-skeleton></app-skeleton>
+  </div>
+  <div class="editCityPage" *ngIf="!loadingState">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title
+          >Edit {{ toEditCity.englishName }} City Information</mat-card-title
+        >
+      </mat-card-header>
+      <mat-card-content>
+        <div class="formContainer">
+          <form [formGroup]="editingForm">
+            <mat-form-field class="formElement">
+              <input
+                matInput
+                placeholder="English Name"
+                formControlName="englishName"
+              />
+            </mat-form-field>
+
+            <mat-form-field class="formElement">
+              <input
+                matInput
+                placeholder="Turkish Name"
+                formControlName="turkishName"
+              />
+            </mat-form-field>
+            <button mat-raised-button (click)="updateCity()">Submit</button>
+          </form>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</app-main>

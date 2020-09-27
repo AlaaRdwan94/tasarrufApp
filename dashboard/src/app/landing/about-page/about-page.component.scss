@@ -1,0 +1,19 @@
+@import "../../../variables.scss";
+.aboutPage {
+  text-align: left !important;
+  .pageHeader {
+    font-size: 100 * $fsize1 / 100;
+    text-align: center;
+    color: $color1;
+    font-weight: 800;
+  }
+  padding: 5%;
+  .sectionTitle {
+    color: rgba(50, 50, 50, 1);
+    text-align: left;
+  }
+  .sectionText {
+    text-align: left;
+    font-size: 1.4em;
+  }
+}

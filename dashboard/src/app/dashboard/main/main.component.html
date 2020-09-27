@@ -1,0 +1,37 @@
+<div class="dashboardMain">
+  <mat-toolbar class="mat-elevation-z10" color="primary">
+    <span>Tasarruf Dashboard</span>
+    <span class="toolbar-spacer"></span>
+  </mat-toolbar>
+  <mat-progress-bar
+    color="[accent]"
+    [mode]="loadingBarMode()"
+    role="progressbar"
+    aria-label="Loading Progress Bar"
+  ></mat-progress-bar>
+  <div class="pageHeader">
+    <span role="heading">{{ title }}</span>
+  </div>
+  <div class="pageContents">
+    <mat-sidenav-container class="sidenav-container">
+      <mat-sidenav mode="side" role="navigation" aria opened class="sidenav">
+        <mat-nav-list>
+          <a mat-list-item routerLink="/admin">Home</a>
+          <a mat-list-item routerLink="/admin/customers">Customers</a>
+          <a mat-list-item routerLink="/admin/partners">Merchants</a>
+          <a mat-list-item routerLink="/admin/offers">Offers Consumed</a>
+          <a mat-list-item routerLink="/admin/approve-partner"
+            >Approve Merchants</a
+          >
+          <a mat-list-item routerLink="/admin/categories">Categories</a>
+          <a mat-list-item routerLink="/admin/plans">Plans</a>
+          <a mat-list-item routerLink="/admin/cities">Cities</a>
+          <a mat-list-item routerLink="/admin/support">Support Info</a>
+        </mat-nav-list>
+      </mat-sidenav>
+      <mat-sidenav-content role="main" class="mainContent">
+        <ng-content></ng-content>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+</div>

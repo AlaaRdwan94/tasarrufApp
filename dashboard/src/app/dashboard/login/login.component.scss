@@ -1,0 +1,25 @@
+@import "../../../variables.scss";
+
+.loginPage {
+  text-align: center;
+  padding-top: 5%;
+  .pageHeader {
+    font-size: 2 * $fsize1;
+    color: $color1;
+    font-weight: 800;
+  }
+  .loginForm {
+    padding-right: 30%;
+    padding-left: 30%;
+  }
+  .loadingIndicator {
+    color: $color1;
+    text-align: center;
+    width: 20%;
+  }
+  .loadingScreen {
+    text-align: center;
+    padding-left: 40%;
+    padding-right: 40%;
+  }
+}

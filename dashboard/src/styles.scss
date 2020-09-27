@@ -1,0 +1,37 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./theme.scss";
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+  overflow-x: hidden;
+}
+* {
+  font-family: "Roboto", sans-serif;
+}
+.actionIconBtn{
+    background: transparent;
+    border: none;
+}
+.actionIconBtn:hover{
+    cursor: pointer;
+    border: none;
+}
+.actionIconBtn:focus{
+    cursor: primary;
+    border-radius: 100%;
+    border: none;
+    outline: 0;
+}
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes click {
+  from {barckground-color: rgba(0,0,0,0.06);}
+  to {background-color: rgba(0,0,0,0.06);}
+}
+
+/* Standard syntax */
+@keyframes click {
+  from {barckground-color: rgba(0,0,0,0.06);}
+  to {background-color: rgba(0,0,0,0.06);}
+}

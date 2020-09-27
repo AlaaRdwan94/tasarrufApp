@@ -1,0 +1,42 @@
+Cities
+=======
+
+- Class
+=========
+   +-----------------------------+
+   |            City             |
+   +-----------------------------+
+   | - ID                        |
+   | - CreatedAt                 |
+   | - DeletedAt                 |
+   | - UpdatedAt                 |
+   | - EnglishName               |
+   | - TurkishName               |
+   | - SetEnglishName()          |
+   | - SetTurkishName()          |
+   +-----------------------------+
+
+- Authorization
+=================
+
++--------+----------+----------+----------+
+|  Read  |  Create  |  Update  |  Delete  |
++--------+----------+----------+----------+
+|   ALL  |  ADMIN   |   ADMIN  |   ADMIN  |
++--------+----------+----------+----------+
+
+- Repository
+==============
+- Create()
+- Edit()
+- Delete()
+- GetByID()
+- GetByAll()
+
+- Usecase
+============
+- Create()
+- Edit()
+- Delete()
+- GetByID()
+- GetAll()

@@ -1,0 +1,38 @@
+<app-main title="New Category" [loading]="loadingState">
+  <div class="skeletonHome" *ngIf="loadingState">
+    <app-skeleton></app-skeleton>
+  </div>
+  <div class="newCategoryPage" *ngIf="!loadingState">
+    <form [formGroup]="createCategoryForm" class="createCategoryForm">
+      <mat-form-field class="createCategoryFormField" appearance="outline">
+        <input
+          matInput
+          color="primary"
+          placeholder="English Name"
+          formControlName="englishName"
+          [errorStateMatcher]="matcher"
+          required
+        />
+        <mat-error *ngIf="englishName.invalid">
+          Please enter a valid english name
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="createCategoryFormField" appearance="outline">
+        <input
+          matInput
+          color="primary"
+          placeholder="Turkish Name"
+          formControlName="turkishName"
+          [errorStateMatcher]="matcher"
+          required
+        />
+        <mat-error *ngIf="turkishName.invalid">
+          Please enter a valid turkish name
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="onSubmitClick()">
+        Submit
+      </button>
+    </form>
+  </div>
+</app-main>

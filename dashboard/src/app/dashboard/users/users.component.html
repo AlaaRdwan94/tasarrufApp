@@ -1,0 +1,94 @@
+<app-main title="Users Page" [loading]="loadingState">
+  <div class="skeletonHome" *ngIf="loadingState">
+    <app-skeleton></app-skeleton>
+  </div>
+  <div class="usersPage" *ngIf="!loadingState">
+    <!-- Users Table -->
+    <div class="usersTable">
+      <div class="tableController">
+        <form [formGroup]="searchForm" class="searchForm">
+          <input
+            type="text"
+            formControlName="emailSearch"
+            class="searchInput"
+            placeholder="Search customers by email or mobile number"
+            (keydown.enter)="searchUsers($event.target.value)"
+          />
+        </form>
+      </div>
+      <table
+        mat-table
+        [dataSource]="usersData"
+        class="mat-elevation-z8"
+        *ngIf="usersData.length > 0"
+      >
+        <ng-container matColumnDef="ID">
+          <th mat-header-cell *matHeaderCellDef>ID</th>
+          <td mat-cell *matCellDef="let element">{{ element.ID }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.firstName }} {{ element.lastName }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Email">
+          <th mat-header-cell *matHeaderCellDef>Email</th>
+          <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Mobile">
+          <th mat-header-cell *matHeaderCellDef>Mobile</th>
+          <td mat-cell *matCellDef="let element">{{ element.mobile }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="AccountType">
+          <th mat-header-cell *matHeaderCellDef>User Type</th>
+          <td mat-cell *matCellDef="let element">{{ element.accountType }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="ViewUser">
+          <th mat-header-cell *matHeaderCellDef>View User</th>
+          <td mat-cell *matCellDef="let element">
+            <a
+              mat-icon-button
+              color="primary"
+              [routerLink]="['/admin/customer', element.ID]"
+            >
+              <mat-icon aria-hidden="false" aria-label="Example home icon"
+                >arrow_right_alt</mat-icon
+              >
+            </a>
+          </td>
+          <td></td
+        ></ng-container>
+
+        <ng-container matColumnDef="DeleteUser">
+          <th mat-header-cell *matHeaderCellDef>Delete Customer</th>
+          <td mat-cell *matCellDef="let element">
+            <button
+              mat-icon-button
+              color="primary"
+              (click)="deleteCustomer(element.ID)"
+            >
+              <mat-icon aria-hidden="false" aria-label="Example home icon"
+                >delete</mat-icon
+              >
+            </button>
+          </td>
+          <td></td
+        ></ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+
+      <div class="emptyData" *ngIf="usersData.length === 0">
+        No customers match this email or phone number.
+      </div>
+    </div>
+    <!--/ Users Table-->
+  </div>
+</app-main>

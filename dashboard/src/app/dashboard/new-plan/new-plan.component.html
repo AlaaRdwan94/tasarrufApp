@@ -1,0 +1,110 @@
+<app-main title="New Plan" [loading]="loadingState">
+  <div class="skeletonHome" *ngIf="loadingState">
+    <app-skeleton></app-skeleton>
+  </div>
+  <div class="newPlanPage" *ngIf="!loadingState">
+    <form [formGroup]="createPlanForm" class="createPlanForm">
+      <mat-form-field class="createPlanFormField" appearance="outline">
+        <input
+          matInput
+          color="primary"
+          placeholder="English Name"
+          formControlName="englishName"
+          [errorStateMatcher]="matcher"
+          required
+        />
+        <mat-error *ngIf="englishName.invalid">
+          Please enter a valid english name
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="createPlanFormField" appearance="outline">
+        <input
+          matInput
+          color="primary"
+          placeholder="Turkish Name"
+          formControlName="trukishName"
+          [errorStateMatcher]="matcher"
+          required
+        />
+        <mat-error *ngIf="trukishName.invalid">
+          Please enter a valid turkish name
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="createPlanFormField" appearance="outline">
+        <input
+          matInput
+          color="primary"
+          placeholder="English Description"
+          formControlName="engishDescription"
+          [errorStateMatcher]="matcher"
+          required
+        />
+        <mat-error *ngIf="engishDescription.invalid">
+          Please enter a valid english description
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="createPlanFormField" appearance="outline">
+        <input
+          matInput
+          color="primary"
+          placeholder="Turkish Description"
+          formControlName="turkishDescription"
+          [errorStateMatcher]="matcher"
+          required
+        />
+        <mat-error *ngIf="turkishDescription.invalid">
+          Please enter a valid turkish description
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="createPlanFormField" appearance="outline">
+        <input
+          matInput
+          color="primary"
+          type="number"
+          placeholder="Price"
+          formControlName="price"
+          [errorStateMatcher]="matcher"
+          required
+        />
+        <mat-error *ngIf="price.invalid">
+          Please enter a valid price
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="createPlanFormField" appearance="outline">
+        <mat-label>Icon</mat-label>
+        <mat-select formControlName="image" [errorStateMatcher]="matcher">
+          <mat-option [value]="planIcons[0]">Gold</mat-option>
+          <mat-option [value]="planIcons[1]">Silver</mat-option>
+          <mat-option [value]="planIcons[2]">Bronze</mat-option>
+          <mat-option [value]="planIcons[3]">Platinum</mat-option>
+          <mat-option [value]="planIcons[4]">Basic</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="createPlanFormField" appearance="outline">
+        <input
+          matInput
+          type="number"
+          color="primary"
+          placeholder="Count of offers"
+          formControlName="countOfOffers"
+          [errorStateMatcher]="matcher"
+          required
+        />
+        <mat-error *ngIf="countOfOffers.invalid">
+          Please enter a valid number of offers
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <div class="isDefaultField">
+        <mat-checkbox color="primary" formControlName="isDefault"
+          >Set as default plan</mat-checkbox
+        >
+      </div>
+      <br />
+      <button mat-raised-button color="primary" (click)="onSubmitClick()">
+        Submit
+      </button>
+    </form>
+  </div>
+</app-main>

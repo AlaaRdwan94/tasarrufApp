@@ -1,0 +1,6 @@
+.env
+.env.prod
+tasarruf
+/.vscode/
+tasarruf-instance-1.pem
+/client/node_modules/

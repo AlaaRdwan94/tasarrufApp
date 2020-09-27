@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0" />
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdn.dwolla.com/1/dwolla.js"></script>
+    <title>Dwolla</title>
+  </head>
+  <body>
+    <div id="iavContainer"></div>
+    <script>
+      const urlString = document.location.href;
+      const url = new URL(urlString);
+      const token = url.searchParams.get("token");
+      dwolla.configure("sandbox");
+      dwolla.iav.start(
+        token,
+        {
+          container: "iavContainer",
+          stylesheets: [
+            "https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext"
+          ],
+          microDeposits: false,
+          fallbackToMicroDeposits: true,
+          backButton: true,
+          subscriber: ({ currentPage, error }) => {
+            console.log(
+              "currentPage:",
+              currentPage,
+              "error:",
+              JSON.stringify(error)
+            );
+          }
+        },
+        function(err, res) {
+          console.log(
+            "Error: " +
+              JSON.stringify(err) +
+              " -- Response: " +
+              JSON.stringify(res)
+          );
+        }
+      );
+    </script>
+  </body>
+</html>

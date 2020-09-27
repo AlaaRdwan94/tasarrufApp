@@ -1,0 +1,38 @@
+<app-main title="Support Info" [loading]="loadingState">
+  <div class="skeletonHome" *ngIf="loadingState">
+    <app-skeleton></app-skeleton>
+  </div>
+  <div class="editPlanPage" *ngIf="!loadingState">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Edit Support Information </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="formContainer">
+          <form [formGroup]="editingSupportInfo">
+            <mat-form-field class="formElement">
+              <input
+                matInput
+                placeholder="Email"
+                formControlName="email"
+                email
+              />
+            </mat-form-field>
+
+            <mat-form-field class="formElement">
+              <input
+                matInput
+                placeholder="Mobile Number"
+                formControlName="mobile"
+              />
+            </mat-form-field>
+
+            <button mat-raised-button (click)="updateSupportInfo()">
+              Submit
+            </button>
+          </form>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</app-main>

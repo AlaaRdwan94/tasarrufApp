@@ -1,0 +1,48 @@
+.homePage {
+  text-align: center;
+  .stat {
+    font-size: 9em;
+    font-weight: 800;
+  }
+  .links {
+    text-align: left;
+    padding: 2%;
+    h1 {
+      text-align: left;
+      font-size: 1.5em;
+      font-weight: 100;
+    }
+    h2 {
+      text-align: left;
+      font-size: 1.2em;
+      font-weight: 100;
+    }
+    h3 {
+      text-align: left;
+      font-size: 1em;
+      font-weight: 200;
+      color: rgb(45, 45, 45, 1);
+    }
+    a {
+      text-decoration: none;
+      color: darkblue;
+      font-size: 1em;
+      text-align: left;
+    }
+    a:hover {
+      text-align: left;
+      color: blueviolet;
+      cursor: pointer;
+    }
+    table {
+      width: 100%;
+      td {
+        text-align: left;
+      }
+    }
+  }
+}
+
+.skeletonHome {
+  background-color: #ffffff;
+}

@@ -1,0 +1,109 @@
+<div class="customer">
+  <mat-card class="userDetailsCard" *ngIf="customer">
+    <div class="cardHeader">
+      <div class="headerTitle">User Details</div>
+    </div>
+    <table class="userPropertiesTable">
+      <tbody>
+        <tr>
+          <th>Field</th>
+          <th>Value</th>
+        </tr>
+        <tr>
+          <td>ID</td>
+          <td>{{ customer.ID }}</td>
+        </tr>
+        <tr>
+          <td>User Type</td>
+          <td>{{ customer.accountType }}</td>
+        </tr>
+        <tr>
+          <td>First Name</td>
+          <td>
+            <span>{{ customer.firstName }}</span>
+          </td>
+        </tr>
+        <tr>
+          <td>Last Name</td>
+          <td>
+            <span>{{ customer.lastName }}</span>
+          </td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td>
+            <span>{{ customer.email }}</span>
+          </td>
+        </tr>
+        <tr>
+          <td>Mobile</td>
+          <td>
+            <span>{{ customer.mobile }}</span>
+          </td>
+        </tr>
+        <tr>
+          <td>Birth Date</td>
+          <td>{{ customer.dateOfBirth }}</td>
+        </tr>
+        <tr *ngIf="currentPlan">
+          <td>Plan</td>
+          <td>{{ currentPlan.englishName }}</td>
+        </tr>
+        <tr *ngIf="!currentPlan">
+          <td>Plan</td>
+          <td>NOT SUBSCRIBED YET</td>
+        </tr>
+        <tr *ngIf="currentPlan">
+          <td>Subscription Expiry</td>
+          <td>{{ customer.Subscription.expireDate | date: "dd-MM-yyyy" }}</td>
+        </tr>
+        <tr *ngIf="customer.active">
+          <td>Active</td>
+          <td>
+            <button
+              mat-raised-button
+              color="primary"
+              (click)="toggleActiveProperty(customer.ID)"
+            >
+              Deactivate
+            </button>
+          </td>
+        </tr>
+        <tr *ngIf="!customer.active">
+          <td>Deactivated</td>
+          <td>
+            <button
+              mat-raised-button
+              color="accent"
+              (click)="toggleActiveProperty(customer.ID)"
+            >
+              Activate
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </mat-card>
+  <mat-card class="userDetailsCard">
+    <div class="cardHeader">
+      <div class="headerTitle">Change Plan</div>
+    </div>
+    <div class="selectPlanForm">
+      <mat-form-field class="selectPlanSelect">
+        <mat-label>Select Plan</mat-label>
+        <mat-select [(value)]="changedPlanID">
+          <mat-option *ngFor="let plan of allPlans" [value]="plan.ID">
+            {{ plan.englishName }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <p>
+        Warning: Changing the customer's plan increases the customer's points.
+        This action can't be undone.
+      </p>
+      <button mat-raised-button color="primary" (click)="upgradePlan()">
+        Save
+      </button>
+    </div>
+  </mat-card>
+</div>

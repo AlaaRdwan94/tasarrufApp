@@ -1,0 +1,90 @@
+<app-main title="Plans" [loading]="loadingState">
+  <div class="skeletonHome" *ngIf="loadingState">
+    <app-skeleton></app-skeleton>
+  </div>
+  <div class="usersPage" *ngIf="!loadingState">
+    <div class="usersTable">
+      <div class="tableController">
+        <h2>Plans</h2>
+        <button
+          mat-icon-button
+          color=""
+          aria-label="Add New plan"
+          [routerLink]="['new-plan']"
+        >
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+      <table mat-table [dataSource]="plans" class="mat-elevation-z8">
+        <ng-container matColumnDef="ID">
+          <th mat-header-cell *matHeaderCellDef>ID</th>
+          <td mat-cell *matCellDef="let element">{{ element.ID }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="default">
+          <th mat-header-cell *matHeaderCellDef>Is Default Plan</th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            [style.fontWeight]="element.isDefault && '500'"
+          >
+            {{ element.isDefault ? "Default" : "-" }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="englishName">
+          <th mat-header-cell *matHeaderCellDef>English Name</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.englishName }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="turkishName">
+          <th mat-header-cell *matHeaderCellDef>Turkish Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.trukishName }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef>Price</th>
+          <td mat-cell *matCellDef="let element">{{ element.price }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="countOfOffers">
+          <th mat-header-cell *matHeaderCellDef>Count Of Offers</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.countOfOffers }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="edit">
+          <th mat-header-cell *matHeaderCellDef>Edit</th>
+          <td mat-cell *matCellDef="let element">
+            <a
+              mat-icon-button
+              color="info"
+              [routerLink]="['edit-plan', element.ID]"
+            >
+              <mat-icon>edit</mat-icon>
+            </a>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef>Delete</th>
+          <td mat-cell *matCellDef="let element">
+            <button
+              mat-icon-button
+              color="primary"
+              aria-label="Delete Plan"
+              (click)="deletePlan(element.ID)"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+  </div>
+</app-main>

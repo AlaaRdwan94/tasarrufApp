@@ -1,0 +1,14 @@
+.editPlanPage{
+    min-height:700px;
+    padding:3%;
+    .formContainer {
+        width: 100%;
+        .formElement {
+            display: block;
+        }
+    }
+    .warning{
+        color: red;
+        font-size: 1.5em;
+    }
+}
